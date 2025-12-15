@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CardDetail from './components/card'
 import './App.css'; 
 
-// Tipos de la estructura de la carta
 type Card = {
     numero: number;
     nombre: string;
@@ -14,10 +13,8 @@ type Card = {
     vida: number;
 };
 
-// Define el estado inicial de los campos del formulario
 type FormFields = Partial<Card> & { descripcion: string; tipo: string };
 
-// Icono de Cierre (X)
 const CloseIcon = () => (
     <svg 
         xmlns="http://www.w3.org/2000/svg" 
@@ -31,9 +28,7 @@ const CloseIcon = () => (
     </svg>
 );
 
-
 function App() {
-    // Estado inicial de las cartas (DESCRIPCIONES ORIGINALES Y COMPLETAS)
     const initialCards: Card[] = [
         {
             ataque: 270,
@@ -144,7 +139,6 @@ function App() {
         },
     };
     
-    // Componente de Formulario (Agregar y Editar)
     const CardForm = () => (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={() => toggleFormModal(false)}>
             <div 
@@ -222,11 +216,9 @@ function App() {
         </div>
     );
     
-    // Componente de Vista Detallada Central (Modal más pequeño y fondo transparente)
     const CardDetailModal = () => (
-        // Fondo oscurecido
-        <div className="fixed inset-0 bg-black bg-opacity-10 flex justify-center items-center z-40 p-4" onClick={() => setSelectedCard(null)}>
 
+        <div className="fixed inset-0 bg-black bg-opacity-10 flex justify-center items-center z-40 p-4" onClick={() => setSelectedCard(null)}>
                 {selectedCard && (
                     <CardDetail
                         {...selectedCard}
@@ -240,10 +232,8 @@ function App() {
 
 
     return (
-        // Contenedor principal con fondo Haikyuu
         <div className="min-h-screen bg-[#A1887F] flex flex-col items-center p-8">
-            
-            {/* Encabezado */}
+            {}
             <header className="w-full max-w-5xl mb-12 text-center bg-[#3E2723] p-4 rounded-b-xl shadow-lg">
                 <h1 className="text-4xl font-extrabold text-[#FFB300] tracking-wider font-serif">
                     ¡El Vuelo de Haikyuu: Cartas de la Cancha!
@@ -251,7 +241,7 @@ function App() {
                 <hr className="w-4/5 mx-auto mt-3 border-t-2 border-[#FFB300] opacity-70" />
             </header>
 
-            {/* Contenedor de las Cartas (desde la derecha) */}
+            {}
             <div className="flex flex-wrap justify-end max-w-5xl w-full flex-row-reverse">
                 {cards.map((card) => (
                     <CardDetail
@@ -264,7 +254,7 @@ function App() {
                 ))}
             </div>
             
-            {/* Botón de Agregar Nueva Carta (centrado abajo) */}
+            {}
             <div className="w-full mt-10 flex justify-center">
                 <button
                     onClick={() => toggleFormModal(true)}
@@ -274,14 +264,11 @@ function App() {
                 </button>
             </div>
             
-            {/* Modales */}
+            {}
             {isModalOpen && <CardForm />}
             {selectedCard && <CardDetailModal />}
 
         </div>
     );
 }
-
 export default App;
-
-
